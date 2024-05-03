@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		676A624E2BE3EE6500DCE1D9 /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 679977972BE3E9E500722F13 /* XcodeKit.framework */; };
+		676A624F2BE3EE6500DCE1D9 /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 679977972BE3E9E500722F13 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		886FC12D212B5A260067A24F /* Array+DuplicatedElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC12C212B5A260067A24F /* Array+DuplicatedElementsTests.swift */; };
 		886FC12F212B5A930067A24F /* Array+DuplicatesElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC12E212B5A930067A24F /* Array+DuplicatesElements.swift */; };
 		886FC130212B5B690067A24F /* Array+DuplicatesElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FC12E212B5A930067A24F /* Array+DuplicatesElements.swift */; };
@@ -56,6 +58,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		676A62502BE3EE6500DCE1D9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				676A624F2BE3EE6500DCE1D9 /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D72EFE962122FBD7009E4A17 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -70,6 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		679977972BE3E9E500722F13 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		886FC12C212B5A260067A24F /* Array+DuplicatedElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DuplicatedElementsTests.swift"; sourceTree = "<group>"; };
 		886FC12E212B5A930067A24F /* Array+DuplicatesElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+DuplicatesElements.swift"; sourceTree = "<group>"; };
 		886FC131212B5C410067A24F /* SortSelectedLinesCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortSelectedLinesCommand.swift; sourceTree = "<group>"; };
@@ -122,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D72EFE882122FBD7009E4A17 /* Cocoa.framework in Frameworks */,
+				676A624E2BE3EE6500DCE1D9 /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				D72EFE872122FBD7009E4A17 /* Cocoa.framework */,
+				679977972BE3E9E500722F13 /* XcodeKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -267,6 +283,7 @@
 				D72EFE812122FBD7009E4A17 /* Sources */,
 				D72EFE822122FBD7009E4A17 /* Frameworks */,
 				D72EFE832122FBD7009E4A17 /* Resources */,
+				676A62502BE3EE6500DCE1D9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,7 +300,7 @@
 		D72EFE582122FBC6009E4A17 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Vadim Bulavin";
 				TargetAttributes = {
@@ -544,6 +561,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = BG5NSSX25D;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = LinesSorter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -567,6 +585,7 @@
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = BG5NSSX25D;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = LinesSorter/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
