@@ -23,15 +23,25 @@ struct Prettifier {
         
         let linesRemoved = removeBlankLines(lines: lines, in: range)
         range = range.lowerBound...(range.upperBound - linesRemoved)
-        
-        LinesSorter().sort(lines, in: range, by: <)
-        
+
+        LinesSorter().sort(lines, in: range) { lhs, rhs in
+            let lhs = lhs
+                .removingImportKeywords()
+                .lowercased()
+            let rhs = rhs
+                .removingImportKeywords()
+                .lowercased()
+
+            return lhs < rhs
+        }
+
         removeDuplicates(from: lines, in: range)
     }
     
     private func trimWhitespaces(from lines: NSMutableArray, in range: CountableClosedRange<Int>) {
         for lineIndex in range where lines[lineIndex] is String {
-            lines[lineIndex] = (lines[lineIndex] as! String).trimmingCharacters(in: .whitespaces)
+            lines[lineIndex] = (lines[lineIndex] as! String)
+                .trimmingCharacters(in: .whitespaces)
         }
     }
     
@@ -54,5 +64,13 @@ struct Prettifier {
             .duplicatedElementsIndices
             .map { $0 + range.lowerBound }
             .forEach(lines.removeObject(at:))
+    }
+}
+
+extension StringProtocol {
+    func removingImportKeywords() -> String {
+        replacingOccurrences(of: "@preconcurrency", with: "")
+            .replacingOccurrences(of: "@testable", with: "")
+            .trimmingCharacters(in: .whitespaces)
     }
 }
