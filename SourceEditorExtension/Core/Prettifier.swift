@@ -24,17 +24,8 @@ struct Prettifier {
         let linesRemoved = removeBlankLines(lines: lines, in: range)
         range = range.lowerBound...(range.upperBound - linesRemoved)
         
-        LinesSorter().sort(lines, in: range) { lhs, rhs in
-            let lhs = lhs
-                .removingImportKeywords()
-                .lowercased()
-            let rhs = rhs
-                .removingImportKeywords()
-                .lowercased()
-
-            return lhs < rhs
-        }
-
+        LinesSorter().sort(lines, in: range, by: <)
+        
         removeDuplicates(from: lines, in: range)
     }
     
@@ -63,13 +54,5 @@ struct Prettifier {
             .duplicatedElementsIndices
             .map { $0 + range.lowerBound }
             .forEach(lines.removeObject(at:))
-    }
-}
-
-extension StringProtocol {
-    func removingImportKeywords() -> String {
-        replacingOccurrences(of: "@preconcurrency", with: "")
-            .replacingOccurrences(of: "@testable", with: "")
-            .replacingOccurrences(of: "import", with: "")
     }
 }
